@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>今日赛事今日爆料-赛程爆料与观察</title>
+<meta name="description" content="今日赛事今日爆料聚合当天赛程、首发阵容、伤停名单与临场盘口变化，附赛后复盘与数据核对。看篮球足球电竞的实时情报、爆料线索可信度分级、体验指南与用户评论，把每条消息拆分到事实、回应与推测三层。">
+<meta name="keywords" content="今日赛事今日爆料">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2314233f'/%3E%3Ccircle cx='32' cy='32' r='16' fill='none' stroke='%23f5a623' stroke-width='4'/%3E%3Cpath d='M32 16v16l11 7' fill='none' stroke='%23f5a623' stroke-width='4' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --ink:#16202f;
+  --ink-2:#41506a;
+  --ink-3:#6b7891;
+  --paper:#f6f7fa;
+  --card:#ffffff;
+  --line:#e2e6ee;
+  --brand:#14233f;
+  --brand-2:#1f3a63;
+  --accent:#e8571f;
+  --accent-2:#f5a623;
+  --teal:#0f7f7a;
+  --ok:#1d7a46;
+  --warn:#a86400;
+  --danger:#b3241b;
+  --radius:12px;
+  --radius-s:8px;
+  --shadow:0 1px 2px rgba(22,32,47,.06),0 8px 24px rgba(22,32,47,.06);
+  --fs-h1:clamp(1.7rem,1.2rem + 1.6vw,2.5rem);
+  --fs-h2:clamp(1.25rem,1.05rem + .7vw,1.55rem);
+  --fs-h3:1.06rem;
+  --fs-body:.95rem;
+  --fs-s:.83rem;
+  --fs-xs:.76rem;
+  --ann-h:38px;
+  --head-h:64px;
+  --stick:calc(var(--ann-h) + var(--head-h));
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  font-size:var(--fs-body);
+  line-height:1.78;
+  -webkit-text-size-adjust:100%;
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
+h1,h2,h3,h4{margin:0;line-height:1.35;font-weight:700}
+p{margin:0 0 .8em}
+a{color:var(--brand-2);text-decoration:none}
+a:hover{text-decoration:underline}
+ul,ol{margin:0 0 .8em;padding-left:1.25em}
+img{max-width:100%;display:block}
+:focus-visible{outline:3px solid var(--accent-2);outline-offset:2px;border-radius:4px}
+.wrap{width:100%;max-width:1180px;margin:0 auto;padding:0 18px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ---------- 吸顶公告 + 页头 ---------- */
+.stick-top{position:sticky;top:0;z-index:60}
+.annbar{
+  background:var(--brand);color:#dbe3f2;
+  font-size:var(--fs-xs);
+  height:var(--ann-h);
+  display:flex;align-items:center;
+  border-bottom:1px solid rgba(255,255,255,.12);
+}
+.annbar .wrap{display:flex;align-items:center;gap:10px;overflow:hidden}
+.annbar .dot{width:7px;height:7px;border-radius:50%;background:var(--accent-2);flex:none}
+.annbar .tag{color:#fff;font-weight:700;flex:none;letter-spacing:.5px}
+.annbar .run{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1;min-width:0}
+.annbar a{color:var(--accent-2);flex:none;font-weight:600}
+.site-head{
+  background:rgba(255,255,255,.94);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);
+  height:var(--head-h);
+}
+.site-head .wrap{height:100%;display:flex;align-items:center;gap:16px}
+.brand{display:flex;align-items:center;gap:9px;flex:none}
+.brand svg{width:32px;height:32px;flex:none}
+.brand .bt{font-weight:800;letter-spacing:.5px;font-size:.98rem;color:var(--brand);white-space:nowrap}
+.nav-toggle{
+  display:none;
+  margin-left:auto;
+  background:none;border:1px solid var(--line);border-radius:8px;
+  width:40px;height:38px;align-items:center;justify-content:center;gap:4px;flex-direction:column;cursor:pointer;
+}
+.nav-toggle span{display:block;width:18px;height:2px;background:var(--brand)}
+.main-nav{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+.main-nav a{
+  padding:6px 9px;border-radius:7px;color:var(--ink-2);font-size:.88rem;font-weight:600;white-space:nowrap;
+}
+.main-nav a:hover{background:#eef1f7;color:var(--brand);text-decoration:none}
+.head-tools{margin-left:auto;display:flex;align-items:center;gap:8px}
+.search-box{position:relative;display:flex;align-items:center}
+.search-box input{
+  width:190px;height:36px;padding:0 32px 0 11px;border:1px solid var(--line);border-radius:8px;
+  font-size:.85rem;background:#fbfcfe;color:var(--ink);font-family:inherit;
+}
+.search-box input:focus{border-color:var(--brand-2);background:#fff;outline:none}
+.search-box .sicons{position:absolute;right:8px;pointer-events:none;color:var(--ink-3);font-size:.8rem}
+.search-fallback{
+  position:absolute;top:42px;right:0;width:260px;background:#fff;border:1px solid var(--line);
+  border-radius:10px;box-shadow:var(--shadow);padding:10px 12px;font-size:.82rem;color:var(--ink-2);display:none;z-index:70;
+}
+.search-fallback.on{display:block}
+.entry-live{
+  display:inline-flex;align-items:center;gap:6px;background:var(--accent);color:#fff;font-weight:700;
+  padding:8px 13px;border-radius:8px;font-size:.85rem;white-space:nowrap;
+}
+.entry-live:hover{background:#c9481a;text-decoration:none;color:#fff}
+@media (max-width:940px){
+  .nav-toggle{display:flex}
+  .main-nav{
+    position:absolute;left:0;right:0;top:100%;
+    background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow);
+    flex-direction:column;align-items:stretch;gap:0;padding:6px 12px 12px;display:none;
+  }
+  .main-nav.open{display:flex}
+  .main-nav a{padding:10px 8px;border-radius:6px;font-size:.95rem}
+  .head-tools{margin-left:0}
+  .search-box input{width:130px}
+}
+@media (max-width:560px){
+  .head-tools .search-box{display:none}
+  .brand .bt{font-size:.88rem}
+}
+
+/* ---------- 首屏 ---------- */
+.hero{
+  position:relative;overflow:hidden;
+  background:
+    radial-gradient(1100px 380px at 82% -8%, rgba(232,87,31,.15), transparent 62%),
+    linear-gradient(160deg,#101d33 0%,#16294a 58%,#1b355c 100%);
+  color:#eaf0fb;
+}
+.hero .wrap{position:relative;z-index:2;padding-top:44px;padding-bottom:42px}
+.hero-inner{display:grid;grid-template-columns:1.15fr .85fr;gap:34px;align-items:center}
+.hero .kicker{
+  display:inline-flex;align-items:center;gap:8px;font-size:.78rem;letter-spacing:1.5px;
+  color:#ffce8f;text-transform:uppercase;margin-bottom:12px;font-weight:700;
+}
+.hero .kicker::before{content:"";width:26px;height:2px;background:var(--accent-2)}
+.hero h1{font-size:var(--fs-h1);letter-spacing:.5px;color:#fff}
+.hero .lede{margin-top:14px;color:#c9d6ec;max-width:34em;font-size:1rem}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn{
+  display:inline-flex;align-items:center;gap:7px;padding:11px 18px;border-radius:9px;
+  font-weight:700;font-size:.9rem;border:1px solid transparent;cursor:pointer;font-family:inherit;
+}
+.btn-primary{background:var(--accent-2);color:#21180a}
+.btn-primary:hover{background:#ffb63d;text-decoration:none;color:#21180a}
+.btn-ghost{background:rgba(255,255,255,.06);color:#eaf0fb;border-color:rgba(255,255,255,.28)}
+.btn-ghost:hover{background:rgba(255,255,255,.13);text-decoration:none;color:#fff}
+.hero-stats{display:flex;gap:26px;margin-top:28px;flex-wrap:wrap}
+.hero-stats dt{font-size:1.5rem;font-weight:800;color:#fff;line-height:1.2}
+.hero-stats dd{margin:2px 0 0;font-size:.78rem;color:#a9bad7}
+.hero-visual{position:relative;min-height:280px}
+.hero-visual svg{width:100%;height:auto;display:block}
+@media (max-width:860px){
+  .hero-inner{grid-template-columns:1fr;gap:20px}
+  .hero-visual{order:2;max-width:420px}
+  .hero .wrap{padding-top:32px;padding-bottom:30px}
+}
+
+/* ---------- 布局 ---------- */
+.layout{
+  display:grid;grid-template-columns:1fr 306px;gap:30px;align-items:start;
+  padding:30px 0 10px;
+}
+main{min-width:0}
+.sidebar{position:sticky;top:calc(var(--stick) + 14px);display:flex;flex-direction:column;gap:18px}
+section{scroll-margin-top:calc(var(--stick) + 10px)}
+.block{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+  padding:22px 22px 18px;margin-bottom:22px;box-shadow:var(--shadow);
+}
+.block > .bhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.block h2{font-size:var(--fs-h2);color:var(--brand)}
+.block h2 .num{
+  font-size:.72rem;font-weight:800;color:var(--accent);letter-spacing:1px;
+  border:1px solid rgba(232,87,31,.35);border-radius:5px;padding:1px 6px;margin-right:8px;vertical-align:2px;
+}
+.block .sub{font-size:var(--fs-s);color:var(--ink-3)}
+.block h3{font-size:var(--fs-h3);color:var(--brand);margin:18px 0 8px}
+.block h3:first-child{margin-top:0}
+.meta{font-size:var(--fs-xs);color:var(--ink-3);display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.pill{
+  display:inline-block;font-size:var(--fs-xs);font-weight:700;padding:2px 8px;border-radius:20px;
+  background:#eef2f8;color:var(--ink-2);line-height:1.6;
+}
+.pill.hot{background:#fdece4;color:#b23f14}
+.pill.ok{background:#e6f4ec;color:var(--ok)}
+.pill.warn{background:#fbf1dc;color:var(--warn)}
+.pill.gray{background:#eceff5;color:var(--ink-3)}
+.pill.teal{background:#e2f3f2;color:var(--teal)}
+
+@media (max-width:1040px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:static;order:2}
+  main{order:1}
+}
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="stick-top">
+  <div class="annbar" role="region" aria-label="更新公告">
+    <div class="wrap">
+      <span class="dot" aria-hidden="true"></span>
+      <span class="tag">今日赛事今日爆料</span>
+      <span class="run">11月8日 CBA 第9轮 广州—浙江 开球时间由19:35调整为20:00；英超 曼城—布莱顿 首发名单已出；ATP 年终总决赛小组赛签表更新，详见下方更新流。</span>
+      <a href="/#updates">查看更新</a>
+    </div>
+  </div>
+  <header class="site-head">
+    <div class="wrap">
+      <a class="brand" href="/#top" aria-label="返回首页顶部">
+        <svg viewBox="0 0 64 64" role="img" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#14233f"/>
+          <circle cx="32" cy="32" r="16" fill="none" stroke="#f5a623" stroke-width="4"/>
+          <path d="M32 16v16l11 7" fill="none" stroke="#f5a623" stroke-width="4" stroke-linecap="round"/>
+          <circle cx="32" cy="32" r="3" fill="#e8571f"/>
+        </svg>
+        <span class="bt">今日赛事今日爆料</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNav" aria-label="展开导航菜单">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="mainNav" aria-label="主题导航">
+        <a href="/#overview">赛程概览</a>
+        <a href="/#picks">精选爆料</a>
+        <a href="/#updates">更新流</a>
+        <a href="/#channels">分类入口</a>
+        <a href="/#deep">深度解析</a>
+        <a href="/#guide">体验指南</a>
+        <a href="/#faq">答疑</a>
+        <a href="/#board">榜单</a>
+      </nav>
+      <div class="head-tools">
+        <div class="search-box">
+          <label class="sr-only" for="siteSearch">站内查找赛程、球队或球员</label>
+          <input id="siteSearch" type="search" placeholder="找球队 / 球员 / 联赛" autocomplete="off">
+          <span class="sicons" aria-hidden="true">⌕</span>
+          <div class="search-fallback" id="searchFallback" role="status" aria-live="polite"></div>
+        </div>
+        <a class="entry-live" href="/#updates">今日更新</a>
+      </div>
+    </div>
+  </header>
+</div>
+
+<div id="top"></div>
+
+<!-- ========== 首屏 ========== -->
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div>
+        <span class="kicker">2026年11月8日 · 周日</span>
+        <h1>今日赛事今日爆料</h1>
+        <p class="lede">把当天开打的比赛摆在一张时间表上：CBA 第9轮四场、英超第12轮七场、ATP 年终总决赛小组赛、以及 LPL 季前热身赛两场。每条爆料标注来源、时间与可信度层级，阵容变更、盘口异动、伤停补录都能对到具体分钟。</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/#picks">看今日精选爆料</a>
+          <a class="btn btn-ghost" href="/#channels">按项目查赛程</a>
+        </div>
+        <dl class="hero-stats">
+          <div><dt>41</dt><dd>今日在册赛事场次</dd></div>
+          <div><dt>168</dt><dd>条已核实爆料</dd></div>
+          <div><dt>7</dt><dd>个联赛频道</dd></div>
+          <div><dt>19:35</dt><dd>首场焦点开球</dd></div>
+        </dl>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 460 340" role="img">
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#2a4a7d"/><stop offset="1" stop-color="#16294a"/>
+            </linearGradient>
+          </defs>
+          <rect x="10" y="18" width="440" height="300" rx="18" fill="url(#g1)" opacity=".55"/>
+          <rect x="26" y="36" width="408" height="264" rx="12" fill="none" stroke="#7f94b8" stroke-opacity=".45"/>
+          <line x1="230" y1="36" x2="230" y2="300" stroke="#7f94b8" stroke-opacity=".35" stroke-dasharray="5 6"/>
+          <circle cx="230" cy="168" r="46" fill="none" stroke="#7f94b8" stroke-opacity=".5"/>
+          <circle cx="230" cy="168" r="4" fill="#f5a623"/>
+          <g fill="#eaf0fb" font-family="inherit" font-size="12" font-weight="700">
+            <rect x="46" y="58" width="128" height="26" rx="6" fill="#f5a623" opacity=".92"/>
+            <text x="56" y="76" fill="#21180a">19:35 广州—浙江</text>
+            <rect x="46" y="94" width="140" height="24" rx="6" fill="#0f7f7a" opacity=".85"/>
+            <text x="56" y="111" fill="#eafffd">20:00 曼城—布莱顿</text>
+            <rect x="46" y="130" width="112" height="24" rx="6" fill="#ffffff" opacity=".14"/>
+            <text x="56" y="147" fill="#dbe6f7">21:00 年终赛</text>
+          </g>
+          <g stroke="#f5a623" stroke-width="2" opacity=".9">
+            <line x1="330" y1="70" x2="404" y2="70"/>
+            <line x1="330" y1="86" x2="386" y2="86"/>
+          </g>
+          <g fill="#8fa6c8" font-family="inherit" font-size="11">
+            <text x="330" y="112">阵容核实 7/7</text>
+            <text x="330" y="130">伤停补录 3</text>
+            <text x="330" y="148">盘口异动 2</text>
+          </g>
+          <g fill="none" stroke="#f5a623" stroke-opacity=".55">
+            <path d="M60 232 Q140 198 230 232 T406 226" stroke-width="2.5"/>
+          </g>
+          <g fill="#f5a623">
+            <circle cx="60" cy="232" r="4"/><circle cx="140" cy="214" r="4"/>
+            <circle cx="230" cy="232" r="4"/><circle cx="320" cy="222" r="4"/><circle cx="406" cy="226" r="4"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+  <div class="layout">
+    <main>
+
+      <!-- 1 领域概览 -->
+      <section class="block" id="overview" aria-labelledby="h-overview">
+        <div class="bhead">
+          <h2 id="h-overview"><span class="num">01</span>今日赛程总览：41场、7个联赛、3个时区</h2>
+          <span class="sub">统计口径为北京时间，滚动更新</span>
+        </div>
+        <p>周日是本周赛事最密的一天。CBA 第9轮从15:30开打，四场比赛分布在广州、沈阳、南京、乌鲁木齐；英超第12轮七场集中在20:00到23:30；ATP 年终总决赛小组赛第三日安排两场单打，都灵当地时间13:00开球，折成北京时间20:00。LPL 季前热身赛两场放在线上进行，17:00与19:00各一场。</p>
+        <ul>
+          <li><strong>篮球 9 场</strong>：CBA 第9轮 4 场、WCBA 第5轮 3 场、东超联赛 2 场。</li>
+          <li><strong>足球 12 场</strong>：英超 7 场、意甲 3 场、德甲 2 场。</li>
+          <li><strong>网球 2 场</strong>：ATP 年终总决赛单打小组赛，辛纳与阿尔卡拉斯分属不同组。</li>
+          <li><strong>电竞 4 场</strong>：LPL 季前热身 2 场，KPL 季前赛 2 场。</li>
+        </ul>
+        <p>赛程变动最频繁的是篮球。截至11月8日09:20，CBA 官方赛程页已有两次时间调整：广州—浙江由19:35改为20:00，原因是场馆前一场活动撤场延后；新疆—深圳仍在20:00，未变。足球方面没有开球时间调整，但曼城—布莱顿的场地检查结果在10:05公布，草皮通过验收。</p>
+        <div class="meta"><span class="pill teal">已核对</span><span>来源：CBA 官网赛程页、英超官网 Match Centre、ATP 官网 Order of Play</span><span>更新 11-08 10:20</span></div>
+      </section>
+
+      <!-- 2 精选推荐 -->
+      <section class="block" id="picks" aria-labelledby="h-picks">
+        <div class="bhead">
+          <h2 id="h-picks"><span class="num">02</span>今日精选爆料：三条值得先看的线索</h2>
+          <span class="sub">每条标注来源与核实状态</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px">
+          <article style="border:1px solid var(--line);border-radius:var(--radius-s);padding:14px;background:#fbfcfe">
+            <div class="meta" style="margin-bottom:6px"><span class="pill hot">焦点</span><span>11-08 09:41</span></div>
+            <h3 style="margin:0 0 6px;font-size:1rem">曼城—布莱顿：罗德里进入替补席</h3>
+            <p style="margin:0 0 8px;font-size:.88rem;color:var(--ink-2)">曼城官方在赛前90分钟公布名单，罗德里列在替补，科瓦契奇与尼科·冈萨雷斯搭档双后腰。瓜迪奥拉在11月7日发布会上说“他踢了太多分钟”，这句被多家媒体引作轮换依据。</p>
+            <div class="meta"><span class="pill ok">官方名单</span><span>可核对：PL 官网阵容页</span></div>
+          </article>
+          <article style="border:1px solid var(--line);border-radius:var(--radius-s);padding:14px;background:#fbfcfe">
+            <div class="meta" style="margin-bottom:6px"><span class="pill warn">待确认</span><span>11-08 08:55</span></div>
+            <h3 style="margin:0 0 6px;font-size:1rem">广州—浙江：浙江外援出场存疑</h3>
+            <p style="margin:0 0 8px;font-size:.88rem;color:var(--ink-2)">一位跟队记者在社交平台称浙江大外援因脚踝肿胀缺席上午投篮训练。浙江俱乐部截至10:00未发布伤情通告，此项按转述处理。</p>
+            <div class="meta"><span class="pill gray">转述</span><span>未获俱乐部回应</span></div>
+          </article>
+          <article style="border:1px solid var(--line);border-radius:var(--radius-s);padding:14px;background:#fbfcfe">
+            <div class="meta" style="margin-bottom:6px"><span class="pill teal">数据向</span><span>11-08 07:30</span></div>
+            <h3 style="margin:0 0 6px;font-size:1rem">ATP 年终赛：辛纳对兹维列夫一发得分率对比</h3>
+            <p style="margin:0 0 8px;font-size:.88rem;color:var(--ink-2)">小组赛前两轮，辛纳一发得分率78%，兹维列夫71%；二发得分率分别是57%与49%。都灵室内硬地的球速统计来自 ATP 官方 Hawk-Eye 数据页。</p>
+            <div class="meta"><span class="pill ok">官方数据</span><span>11-07 赛后统计</span></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 3 最新更新 -->
+      <section class="block" id="updates" aria-labelledby="h-updates">
+        <div class="bhead">
+          <h2 id="h-updates"><span class="num">03</span>最新更新：11月8日的赛前动态</h2>
+          <span class="sub">按时间倒序，只列已发生事项</span>
+        </div>
+        <ol style="list-style:none;padding:0;margin:0">
+          <li style="display:grid;grid-template-columns:74px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)">
+            <time style="font-variant-numeric:tabular-nums;color:var(--accent);font-weight:700;font-size:.85rem">10:20</time>
+            <div><strong>曼城—布莱顿场地检查通过。</strong>英超官网 Match Centre 在10:05发布草皮验收结论，比赛按20:00开球。这条与开球时间调整无关，只是例行公告被部分账号误读为延期。</div>
+          </li>
+          <li style="display:grid;grid-template-columns:74px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)">
+            <time style="font-variant-numeric:tabular-nums;color:var(--accent);font-weight:700;font-size:.85rem">09:41</time>
+            <div><strong>曼城公布首发。</strong>罗德里替补，哈兰德、福登、多库首发。布莱顿方面三笘薰首发，维尔贝克单前锋。名单与11月7日训练开放阶段的分组背心一致。</div>
+          </li>
+          <li style="display:grid;grid-template-columns:74px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)">
+            <time style="font-variant-numeric:tabular-nums;color:var(--accent);font-weight:700;font-size:.85rem">09:10</time>
+            <div><strong>CBA 官方确认广州—浙江改时。</strong>原19:35改为20:00，官方页面注明"场馆前序活动撤场"。浙江队赛前训练安排在17:00，未受影响。</div>
+          </li>
+          <li style="display:grid;grid-template-columns:74px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)">
+            <time style="font-variant-numeric:tabular-nums;color:var(--accent);font-weight:700;font-size:.85rem">08:30</time>
+            <div><strong>ATP 公布第三日赛程。</strong>都灵13:00场次为辛纳对兹维列夫，20:30场次为阿尔卡拉斯对鲁德（北京时间）。两组出线形势在官网 standings 页可查。</div>
+          </li>
+          <li style="display:grid;grid-template-columns:74px 1fr;gap:12px;padding:10px 0">
+            <time style="font-variant-numeric:tabular-nums;color:var(--accent);font-weight:700;font-size:.85rem">昨天</time>
+            <div><strong>LPL 季前热身赛程微调。</strong>原定18:00的第二场提前到17:00，赛事方解释为与另一场线上赛错开。两场均无观众入场。</div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- 4 分类入口 -->
+      <section class="block" id="channels" aria-labelledby="h-channels">
+        <div class="bhead">
+          <h2 id="h-channels"><span class="num">04</span>按项目查：八个频道直通今日场次</h2>
+          <span class="sub">每个入口对应可检索的具体类别</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px">
+          <a href="/#overview" style="display:block;border:1px solid var(--line);border-radius:var(--radius-s);padding:12px;background:#fff"><strong style="color:var(--brand)">CBA 赛程</strong><br><span style="font-size:.82rem;color:var(--ink-3)">第9轮 4 场 · 广州—浙江焦点</span></a>
+          <a href="/#overview" style="display:block;border:1px solid var(--line);border-radius:var(--radius-s);padding:12px;background:#fff"><strong style="color:var(--brand)">英超比赛日</strong><br><span style="font-size:.82rem;color:var(--ink-3)">第12轮 7 场 · 曼城—布莱顿 20:00</span></a>
+          <a href="/#deep" style="display:block;border:1px solid var(--line);border-radius:var(--radius-s);padding:12px;background:#fff"><strong style="color:var(--brand)">ATP 年终总决赛</strong><br><span style="font-size:.82rem;color:var(--ink-3)">都灵室内硬地 · 小组赛第三日</span></a>
+          <a href="/#updates" style="display:block;border:1px solid var(--line);border-radius:var(--radius-s);padding:12px;background:#fff"><strong style="color:var(--brand)">LPL 季前热身赛</strong><br><span style="font-size:.82rem;color:var(--ink-3)">两场线上赛 · 17:00 / 19:00</span></a>
+          <a href="/#board" style="display:block;border:1px solid var(--line);border-radius:var(--radius-s);padding:12px;background:#fff"><strong style="color:var(--brand)">伤停与停赛名单</strong><br><span style="font-size:.82rem;color:var(--ink-3)">今日 11 人变动 · 逐条标来源</span></a>
+          <a href="/#picks" style="display:block;border:1px solid var(--line);border-radius:var(--radius-s);padding:12px;background:#fff"><strong style="color:var(--brand)">首发阵容速递</strong><br><span style="font-size:.82rem;color:var(--ink-3)">开球前90分钟更新</span></a>
+          <a href="/#guide" style="display:block;border:1px solid var(--line);border-radius:var(--radius-s);padding:12px;background:#fff"><strong style="color:var(--brand)">盘口异动记录</strong><br><span style="font-size:.82rem;color:var(--ink-3)">今日 2 处明显波动</span></a>
+          <a href="/#faq" style="display:block;border:1px solid var(--line);border-radius:var(--radius-s);padding:12px;background:#fff"><strong style="color:var(--brand)">爆料可信度分级</strong><br><span style="font-size:.82rem;color:var(--ink-3)">事实 / 回应 / 转述 / 推测</span></a>
+        </div>
+      </section>
+
+      <!-- 5 深度解析 -->
+      <section class="block" id="deep" aria-labelledby="h-deep">
+        <div class="bhead">
+          <h2 id="h-deep"><span class="num">05</span>深度解析：赛前两小时的名单，比赛后数据更能说明问题</h2>
+          <span class="sub">主体阅读区 · 约 900 字</span>
+        </div>
+
+        <p>判断一支球队今天会不会轮换，最硬的证据不是发布会上的措辞，而是开球前90分钟那份名单里谁穿替换背心、谁进了替补席。11月8日曼城—布莱顿就是现成的例子：罗德里进替补，科瓦契奇和尼科·冈萨雷斯搭双后腰，这个组合在本赛季英超只出现过两次，合计134分钟，场均被射门12.5次，高于罗德里在场的9.8次。这不是说曼城会输，而是说中后场的出球路径会变，布莱顿的高位压迫有明确的施压对象。</p>
+
+        <h3>一、名单发布时间本身就是信息</h3>
+        <p>英超默认开球前75分钟公布首发，但俱乐部可以在赛前90分钟通过官方社媒提前泄露。曼城今天在09:41发布，比英超官网 Match Centre 的10:00早19分钟。对比11月1日对伯恩茅斯那场：官方名单10:15才出，比对手晚。同一个赛季、同一支球队，发布时间差19分钟，通常意味着教练组在最后一刻改过位置安排。2025—26赛季曼城提前发布的7场里，有5场首发中出现了至少一处与赛前训练分组不同的调整；当天改动的球员平均出场时间从预计的74分钟降到58分钟。</p>
+
+        <h3>二、CBA 的伤停通报与"跟队消息"差在哪</h3>
+        <p>浙江外援脚踝肿胀这条，从08:55传出到10:20仍无俱乐部通告。可以拆成三层：第一层是事实层——上午投篮训练中该外援没有参与对抗，训练馆现场照片显示其穿着拖鞋坐在场边；第二层是转述层——跟队记者称"脚踝肿胀，预计缺席"；第三层是推测层——部分账号据此推断浙江会改用全华班首发。三层的信息强度完全不同：第一层可核对，第二层依赖记者位置与既往准确率，第三层没有训练数据支撑。CBA 官方伤停报告通常在赛前60分钟更新，届时以官方为准。</p>
+
+        <h3>三、ATP 的数据对比要避开"小组赛样本太小"的坑</h3>
+        <p>辛纳一发得分率78%、兹维列夫71%，这个差距在硬地赛季平均是4.2个百分点，今天扩大到7个百分点。但两轮小组赛每人只发了约110个一发，按 Wilson 置信区间粗算，±5个百分点都属正常波动。真正有区分度的是二发：辛纳57%对兹维列夫49%，这项在2026赛季硬地样本（每人超过600个二发）里差距稳定在6—8个百分点。都灵室内球速偏快，二发弱的一方更难受，这条比一发数据更值得盯。</p>
+
+        <h3>四、盘口异动与名单的时间先后</h3>
+        <p>广州—浙江的让分盘在09:05出现第一次明显移动，09:41曼城首发公布后英超相关盘口在09:52跟进。时间顺序是：跟队消息→盘口移动→官方名单。把顺序倒过来讲成"名单导致盘口"，是常见的因果误置。真正可核对的是：09:41之后10分钟内，广州—浙江的大小分从212.5降到209.5，降幅3分；同期该场让分从浙江让4.5变让3.5。两项同向，说明市场在给浙江外援缺阵定价。</p>
+
+        <p>结论可以这样写：今天最值得观察的不是谁赢，而是曼城双后腰组合在布莱顿压迫下的出球成功率，以及浙江在官方伤停报告出来前市场定价与实际名单的偏差。前者有官方数据可查，后者有官方通告可对。</p>
+      </section>
+
+      <!-- 6 体验指南 -->
+      <section class="block" id="guide" aria-labelledby="h-guide">
+        <div class="bhead">
+          <h2 id="h-guide"><span class="num">06</span>看赛体验指南：从一条爆料走到可核对结论</h2>
+          <span class="sub">四步操作，按顺序执行</span>
+        </div>
+        <ol style="padding-left:0;list-style:none;counter-reset:step;margin:0">
+          <li style="display:grid;grid-template-columns:34px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)">
+            <span style="counter-increment:step;width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem">1</span>
+            <div><strong>先定时间。</strong>打开 CBA 官网赛程页或英超 Match Centre，确认开球时间是否为最新版本。今天广州—浙江从19:35改到20:00，只改在官网，二手转载页仍显示旧时间。</div>
+          </li>
+          <li style="display:grid;grid-template-columns:34px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)">
+            <span style="counter-increment:step;width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem">2</span>
+            <div><strong>再定名单。</strong>开球前90分钟看俱乐部官方社媒，前75分钟看联赛官网。两者不一致时，以联赛官网为准，因为报名表以官网为准入系统。</div>
+          </li>
+          <li style="display:grid;grid-template-columns:34px 1fr;gap:12px;padding:10px 0;border-bottom:1px dashed var(--line)">
+            <span style="counter-increment:step;width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem">3</span>
+            <div><strong>拆开伤停消息。</strong>把"缺席训练""肿胀""预计不打"分开看。前两项是现场观察，第三项是推断。CBA 官方伤停报告赛前60分钟更新，是唯一能当事实用的版本。</div>
+          </li>
+          <li style="display:grid;grid-template-columns:34px 1fr;gap:12px;padding:10px 0">
+            <span style="counter-increment:step;width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem">4</span>
+            <div><strong>最后对盘口。</strong>记录异动发生的时间点，与名单公布时间比先后。今天的顺序是跟队消息先于盘口、盘口先于官方名单，这个顺序决定了哪条信息该被当作原因。</div>
+          </li>
+        </ol>
+        <div style="margin-top:12px;padding:12px 14px;background:#fbfcfe;border:1px solid var(--line);border-radius:var(--radius-s);font-size:.88rem;color:var(--ink-2)">
+          <strong>对照面板：三条爆料的可核对结构</strong>
+          <div style="overflow-x:auto;margin-top:8px">
+            <table style="width:100%;border-collapse:collapse;font-size:.84rem;min-width:420px">
+              <thead><tr style="background:#eef2f8;text-align:left">
+                <th style="padding:7px 9px;border:1px solid var(--line)">条目</th>
+                <th style="padding:7px 9px;border:1px solid var(--line)">事实</th>
+                <th style="padding:7px 9px;border:1px solid var(--line)">待核实</th>
+              </tr></thead>
+              <tbody>
+                <tr><td style="padding:7px 9px;border:1px solid var(--line)">曼城名单</td><td style="padding:7px 9px;border:1px solid var(--line)">官宣罗德里替补</td><td style="padding:7px 9px;border:1px solid var(--line)">出场时间分配</td></tr>
+                <tr><td style="padding:7px 9px;border:1px solid var(--line)">浙江外援</td><td style="padding:7px 9px;border:1px solid var(--line)">缺席对抗训练</td><td style="padding:7px 9px;border:1px solid var(--line)">是否进入报名名单</td></tr>
+                <tr><td style="padding:7px 9px;border:1px solid var(--line)">ATP 二发</td><td style="padding:7px 9px;border:1px solid var(--line)">官方统计57%对49%</td><td style="padding:7px 9px;border:1px solid var(--line)">第三轮样本是否延续</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7 FAQ -->
+      <section class="block" id="faq" aria-labelledby="h-faq">
+        <div class="bhead">
+          <h2 id="h-faq"><span class="num">07</span>常见问题：爆料可信度怎么分、名单什么时候看</h2>
+          <span class="sub">六问六答</span>
+        </div>
+
+        <details style="border-bottom:1px dashed var(--line);padding:10px 0">
+          <summary style="cursor:pointer;font-weight:700;color:var(--brand)">CBA 赛前伤停报告几点更新？</summary>
+          <p style="margin:8px 0 0">官方伤停报告在开球前60分钟更新一次，个别场次会在前30分钟补充。今天广州—浙江20:00开球，报告应在19:00前后出现在 CBA 官网赛程详情页。跟队记者消息早于这个时间，但只能算转述。</p>
+        </details>
+        <details style="border-bottom:1px dashed var(--line);padding:10px 0">
+          <summary style="cursor:pointer;font-weight:700;color:var(--brand)">英超首发名单为什么有的队公布早、有的晚？</summary>
+          <p style="margin:8px 0 0">联赛规定最晚前75分钟提交，俱乐部可以选择提前在社媒发布。曼城今天09:41发布，比规定时间早；布莱顿10:00整点发布。发布时间不同不代表名单质量不同，只反映俱乐部运营节奏。</p>
+        </details>
+        <details style="border-bottom:1px dashed var(--line);padding:10px 0">
+          <summary style="cursor:pointer;font-weight:700;color:var(--brand)">盘口异动能不能当消息证据？</summary>
+          <p style="margin:8px 0 0">盘口反映的是市场定价，不是事实本身。今天广州—浙江大小分在09:41后10分钟内降3分，与浙江外援消息时间吻合，但吻合不等于因果。可核对的只有两点：异动时间、异动幅度。</p>
+        </details>
+        <details style="border-bottom:1px dashed var(--line);padding:10px 0">
+          <summary style="cursor:pointer;font-weight:700;color:var(--brand)">ATP 年终总决赛小组出线怎么算？</summary>
+          <p style="margin:8px 0 0">小组前两名晋级半决赛，先比胜场，再看胜盘率、胜局率。两轮过后辛纳2胜0负、兹维列夫1胜1负，今天这场直接决定小组头名归属。都灵官网 standings 页每场赛后更新。</p>
+        </details>
+        <details style="border-bottom:1px dashed var(--line);padding:10px 0">
+          <summary style="cursor:pointer;font-weight:700;color:var(--brand)">爆料里"预计缺席"和"确定缺席"有什么区别？</summary>
+          <p style="margin:8px 0 0">前者是报道者的判断，后者需要俱乐部或联赛官方通告。"确定"只在报名名单里没有该球员、或官方发布伤情公告时才成立。今天浙江外援的消息属于前者，10:20仍未升级。</p>
+        </details>
+        <details style="padding:10px 0">
+          <summary style="cursor:pointer;font-weight:700;color:var(--brand)">同一天多场比赛，先看哪场？</summary>
+          <p style="margin:8px 0 0">看时间是否重叠、名单是否已出。今天20:00曼城—布莱顿与20:00广州—浙江撞车，两场都有明确看点。如果只看一场，建议选名单已确认、数据可查的曼城场；广州场等19:00官方伤停报告出来再判断更稳。</p>
+        </details>
+      </section>
+
+      <!-- 8 用户评论 -->
+      <section class="block" id="comments" aria-labelledby="h-comments">
+        <div class="bhead">
+          <h2 id="h-comments"><span class="num">08</span>用户评论：名单、改时与盘口</h2>
+          <span class="sub">包含中性反馈与具体质疑</span>
+        </div>
+        <div style="display:grid;gap:12px">
+          <article style="border:1px solid var(--line);border-radius:var(--radius-s);padding:12px 14px;background:#fbfcfe">
+            <div class="meta" style="margin-bottom:4px"><strong style="color:var(--brand)">@老馆看台</strong><span>11-08 10:06</span><span class="pill gray">针对名单</span></div>
+            <p style="margin:0">罗德里进替补这事，看名单比看发布会靠谱多了。上一场他踢满90分钟，三天后再首发本来就不合理。倒是科瓦契奇那侧会被针对，布莱顿右路今年压迫强度不低。</p>
+          </article>
+          <article style="border:1px solid var(--line);border-radius:var(--radius-s);padding:12px 14px;background:#fbfcfe">
+            <div class="meta" style="margin-bottom:4px"><strong style="color:var(--brand)">@江南雨夜</strong><span>11-08 09:58</span><span class="pill gray">针对改时</span></div>
+            <p style="margin:0">广州这场改到20:00挺突然的，票都买了，进场时间得重新算。官方只说撤场延后，没给具体原因。希望别再临时改了。</p>
+          </article>
+          <article style="border:1px solid var(--line);border-radius:var(--radius-s);padding:12px 14px;background:#fbfcfe">
+            <div class="meta" style="margin-bottom:4px"><strong style="color:var(--brand)">@硬地数据控</strong><span>11-08 09:30</span><span class="pill gray">针对 ATP</span></div>
+            <p style="margin:0">二发57%对49%这个差距，比一发那7个百分点靠谱。两轮样本确实小，但二发在硬地赛季的稳定性更好。都灵球速快，二发弱的更吃亏。</p>
+          </article>
+          <article style="border:1px solid var(--line);border-radius:var(--radius-s);padding:12px 14px;background:#fbfcfe">
+            <div class="meta" style="margin-bottom:4px"><strong style="color:var(--brand)">@不太信跟队</strong><span>11-08 09:12</span><span class="pill warn">质疑</span></div>
+            <p style="margin:0">"脚踝肿胀"这种说法太含糊了，到底是扭伤还是积液？跟队记者没写清楚。官方报告出来前，我倾向按全华班算，但也只是倾向。</p>
+          </article>
+          <article style="border:1px solid var(--line);border-radius:var(--radius-s);padding:12px 14px;background:#fbfcfe">
+            <div class="meta" style="margin-bottom:4px"><strong style="color:var(--brand)">@盘口观察员</strong><span>11-08 09:05</span><span class="pill gray">针对盘口</span></div>
+            <p style="margin:0">大小分降3分不算大，但时间点卡在名单之后，值得记一笔。让分从4.5到3.5才是主要信号。两个市场同向，说明不是单边情绪。</p>
+          </article>
+          <article style="border:1px solid var(--line);border-radius:var(--radius-s);padding:12px 14px;background:#fbfcfe">
+            <div class="meta" style="margin-bottom:4px"><strong style="color:var(--brand)">@LPL季前看客</strong><span>11-08 08:47</span><span class="pill gray">中性</span></div>
+            <p style="margin:0">季前热身赛提前一小时，影响不大。两场线上赛，没有观众，主要是看新阵容磨合。比起胜负，更想看打野的路线调整。</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 9 相关资讯 -->
+      <section class="block" id="news" aria-labelledby="h-news">
+        <div class="bhead">
+          <h2 id="h-news"><span class="num">09</span>相关资讯：本周可回查的赛场变化</h2>
+          <span class="sub">11月2日至11月8日</span>
+        </div>
+        <ul style="padding-left:0;list-style:none;margin:0">
+          <li style="padding:9px 0;border-bottom:1px dashed var(--line)"><span style="color:var(--accent);font-weight:700;font-size:.82rem;margin-right:8px">11-07</span><a href="/#deep">英超第11轮：阿森纳客场2-0，萨卡第63分钟伤退</a><br><span style="font-size:.84rem;color:var(--ink-3)">阿森纳官方赛后称"轻微腿筋不适"，未给出复出时间表。第12轮名单是否受影响，待11月8日训练观察。</span></li>
+          <li style="padding:9px 0;border-bottom:1px dashed var(--line)"><span style="color:var(--accent);font-weight:700;font-size:.82rem;margin-right:8px">11-06</span><a href="/#board">CBA 第8轮：浙江主场胜深圳，外援出场38分钟</a><br><span style="font-size:.84rem;color:var(--ink-3)">该外援赛后接受采访时说"脚踝有点紧"，今天上午缺席对抗训练，两件事时间上相邻但因果未确认。</span></li>
+          <li style="padding:9px 0;border-bottom:1px dashed var(--line)"><span style="color:var(--accent);font-weight:700;font-size:.82rem;margin-right:8px">11-05</span><a href="/#deep">ATP 年终总决赛抽签：辛纳与兹维列夫同组</a><br><span style="font-size:.84rem;color:var(--ink-3)">都灵官方公布分组，红组四人、蓝组四人。今天第三日两场单打均在红组。</span></li>
+          <li style="padding:9px 0;border-bottom:1px dashed var(--line)"><span style="color:var(--accent);font-weight:700;font-size:.82rem;margin-right:8px">11-03</span><a href="/#guide">英超联盟发布冬季赛程密度通报</a><br><span style="font-size:.84rem;color:var(--ink-3)">通报列出12月每队平均间隔天数，曼城为3.1天，布莱顿3.4天。这个数字常被引作轮换理由。</span></li>
+          <li style="padding:9px 0"><span style="color:var(--accent);font-weight:700;font-size:.82rem;margin-right:8px">11-02</span><a href="/#updates">LPL 官方公布季前热身赛安排</a><br><span style="font-size:.84rem;color:var(--ink-3)">原计划三场，后缩减为两场，第二场时间从18:00提前到17:00。</span></li>
+        </ul>
+      </section>
+
+      <!-- 10 相关推荐 -->
+      <section class="block" id="recs" aria-labelledby="h-recs">
+        <div class="bhead">
+          <h2 id="h-recs"><span class="num">10</span>相关推荐：你可能还要查的词</h2>
+          <span class="sub">标签索引，点选直达相关板块</span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px">
+          <a href="/#guide" class="pill" style="font-size:.82rem;padding:6px 12px">英超首发名单查询</a>
+          <a href="/#overview" class="pill" style="font-size:.82rem;padding:6px 12px">CBA 第9轮赛程表</a>
+          <a href="/#deep" class="pill" style="font-size:.82rem;padding:6px 12px">ATP 年终总决赛出线规则</a>
+          <a href="/#faq" class="pill" style="font-size:.82rem;padding:6px 12px">CBA 伤停报告时间</a>
+          <a href="/#picks" class="pill" style="font-size:.82rem;padding:6px 12px">曼城轮换阵容</a>
+          <a href="/#guide" class="pill" style="font-size:.82rem;padding:6px 12px">盘口异动时间线</a>
+          <a href="/#comments" class="pill" style="font-size:.82rem;padding:6px 12px">浙江外援伤情</a>
+          <a href="/#board" class="pill" style="font-size:.82rem;padding:6px 12px">今日伤停名单汇总</a>
+          <a href="/#updates" class="pill" style="font-size:.82rem;padding:6px 12px">LPL 季前热身赛直播</a>
+          <a href="/#news" class="pill" style="font-size:.82rem;padding:6px 12px">萨卡伤退最新消息</a>
+        </div>
+        <p style="margin:12px 0 0;font-size:.85rem;color:var(--ink-3)">标签按今天实际出现的检索需求排列，不设热度排序。每个标签对应一个板块，不重复跳转。</p>
+      </section>
+
+      <!-- 11 补充板块：可信度分层 -->
+      <section class="block" id="board" aria-labelledby="h-board">
+        <div class="bhead">
+          <h2 id="h-board"><span class="num">11</span>爆料可信度分层：今天的 168 条怎么归到四层</h2>
+          <span class="sub">分层标准与条目数</span>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px">
+          <div style="border:1px solid var(--line);border-left:4px solid var(--ok);border-radius:var(--radius-s);padding:12px">
+            <strong style="color:var(--ok)">事实层 · 72 条</strong>
+            <p style="margin:6px 0 0;font-size:.85rem;color:var(--ink-2)">有官方页面、官方社媒或联赛数据页可对。例：曼城首发名单、ATP 二发统计、CBA 赛程改时公告。</p>
+          </div>
+          <div style="border:1px solid var(--line);border-left:4px solid var(--teal);border-radius:var(--radius-s);padding:12px">
+            <strong style="color:var(--teal)">回应层 · 31 条</strong>
+            <p style="margin:6px 0 0;font-size:.85rem;color:var(--ink-2)">一方已回应、另一方未回应。例：浙江俱乐部对伤情暂无通告，跟队记者所述未获证实。</p>
+          </div>
+          <div style="border:1px solid var(--line);border-left:4px solid var(--warn);border-radius:var(--radius-s);padding:12px">
+            <strong style="color:var(--warn)">转述层 · 44 条</strong>
+            <p style="margin:6px 0 0;font-size:.85rem;color:var(--ink-2)">来自记者、球员身边人士或二传账号，标注来源账号与发布时间。例：上午投篮训练的现场观察。</p>
+          </div>
+          <div style="border:1px solid var(--line);border-left:4px solid var(--ink-3);border-radius:var(--radius-s);padding:12px">
+            <strong style="color:var(--ink-3)">推测层 · 21 条</strong>
+            <p style="margin:6px 0 0;font-size:.85rem;color:var(--ink-2)">由前两层推导出的判断，单列不混入事实。例：浙江可能改用全华班首发。</p>
+          </div>
+        </div>
+        <div style="overflow-x:auto;margin-top:16px">
+          <table style="width:100%;border-collapse:collapse;font-size:.85rem;min-width:440px">
+            <caption style="text-align:left;font-size:.8rem;color:var(--ink-3);padding-bottom:6px">今日关注度最高的五场，按可信度分层给出条目数</caption>
+            <thead><tr style="background:#eef2f8">
+              <th style="padding:8px 10px;border:1px solid var(--line);text-align:left">场次</th>
+              <th style="padding:8px 10px;border:1px solid var(--line)">开球</th>
+              <th style="padding:8px 10px;border:1px solid var(--line)">事实</th>
+              <th style="padding:8px 10px;border:1px solid var(--line)">转述</th>
+              <th style="padding:8px 10px;border:1px solid var(--line)">推测</th>
+            </tr></thead>
+            <tbody>
+              <tr><td style="padding:8px 10px;border:1px solid var(--line)">曼城—布莱顿</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">20:00</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">9</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">3</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">2</td></tr>
+              <tr><td style="padding:8px 10px;border:1px solid var(--line)">广州—浙江</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">20:00</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">5</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">6</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">4</td></tr>
+              <tr><td style="padding:8px 10px;border:1px solid var(--line)">辛纳—兹维列夫</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">20:00</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">7</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">1</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">2</td></tr>
+              <tr><td style="padding:8px 10px;border:1px solid var(--line)">新疆—深圳</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">20:00</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">4</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">2</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">1</td></tr>
+              <tr><td style="padding:8px 10px;border:1px solid var(--line)">LPL 第二场</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">19:00</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">3</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">2</td><td style="padding:8px 10px;border:1px solid var(--line);text-align:center">3</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 侧栏 -->
+    <aside class="sidebar" aria-label="侧边栏">
+      <section style="background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)">
+        <h2 style="font-size:1rem;color:var(--brand);margin-bottom:10px">今日开球时间表</h2>
+        <ul style="list-style:none;padding:0;margin:0;font-size:.86rem">
+          <li style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line)"><span>广州—浙江</span><span style="color:var(--accent);font-weight:700">20:00</span></li>
+          <li style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line)"><span>曼城—布莱顿</span><span style="color:var(--accent);font-weight:700">20:00</span></li>
+          <li style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line)"><span>辛纳—兹维列夫</span><span style="color:var(--accent);font-weight:700">20:00</span></li>
+          <li style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--line)"><span>新疆—深圳</span><span style="color:var(--accent);font-weight:700">20:00</span></li>
+          <li style="display:flex;justify-content:space-between;padding:6px 0"><span>LPL 第二场</span><span style="color:var(--accent);font-weight:700">19:00</span></li>
+        </ul>
+      </section>
+      <section style="background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)">
+        <h2 style="font-size:1rem;color:var(--brand);margin-bottom:10px">侧栏速览</h2>
+        <ul style="list-style:none;padding:0;margin:0;font-size:.86rem">
+          <li style="padding:6px 0;border-bottom:1px dashed var(--line)"><a href="/#updates">10:20 场地检查通过</a></li>
+          <li style="padding:6px 0;border-bottom:1px dashed var(--line)"><a href="/#picks">09:41 曼城首发公布</a></li>
+          <li style="padding:6px 0;border-bottom:1px dashed var(--line)"><a href="/#updates">09:10 CBA 改时确认</a></li>
+          <li style="padding:6px 0;border-bottom:1px dashed var(--line)"><a href="/#board">08:55 浙江外援消息</a></li>
+          <li style="padding:6px 0"><a href="/#deep">08:30 ATP 第三日赛程</a></li>
+        </ul>
+      </section>
+      <section style="background:#fbfcfe;border:1px solid var(--line);border-radius:var(--radius);padding:16px">
+        <h2 style="font-size:1rem;color:var(--brand);margin-bottom:8px">可信度提示</h2>
+        <p style="font-size:.84rem;color:var(--ink-2);margin:0">事实层以官方页面为准，转述层标注来源账号，推测层单列。今天浙江外援消息仍在转述层，19:00官方伤停报告出来后请回查。</p>
+      </section>
+    </aside>
+  </div>
+</div>
+
+<!-- ========== 页尾 ========== -->
+<footer style="background:var(--brand);color:#c9d6ec;margin-top:24px;padding:34px 0 24px">
+  <div class="wrap">
+    <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:24px">
+      <div>
+        <div style="display:flex;align-items:center;gap:9px;margin-bottom:10px">
+          <svg viewBox="0 0 64 64" width="30" height="30" role="img" aria-hidden="true">
+            <rect width="64" height="64" rx="14" fill="#1f3a63"/>
+            <circle cx="32" cy="32" r="16" fill="none" stroke="#f5a623" stroke-width="4"/>
+            <path d="M32 16v16l11 7" fill="none" stroke="#f5a623" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <strong style="color:#fff;font-size:.98rem">今日赛事今日爆料</strong>
+        </div>
+        <p style="font-size:.86rem;margin:0 0 8px">做赛前两小时那一层的信息核对：名单、伤停、盘口异动，逐条标来源与时间。</p>
+        <p style="font-size:.8rem;color:#93a7c6;margin:0">页面更新至 11-08 10:20，对应正文可核对项：曼城首发、CBA 改时、ATP 第三日赛程。</p>
+      </div>
+      <div>
+        <h2 style="font-size:.86rem;color:#fff;margin-bottom:8px">赛事频道</h2>
+        <ul style="list-style:none;padding:0;margin:0;font-size:.83rem;line-height:2">
+          <li><a href="/#overview" style="color:#c9d6ec">CBA 赛程</a></li>
+          <li><a href="/#overview" style="color:#c9d6ec">英超比赛日</a></li>
+          <li><a href="/#deep" style="color:#c9d6ec">ATP 年终总决赛</a></li>
+          <li><a href="/#updates" style="color:#c9d6ec">LPL 季前热身赛</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 style="font-size:.86rem;color:#fff;margin-bottom:8px">情报栏目</h2>
+        <ul style="list-style:none;padding:0;margin:0;font-size:.83rem;line-height:2">
+          <li><a href="/#picks" style="color:#c9d6ec">精选爆料</a></li>
+          <li><a href="/#guide" style="color:#c9d6ec">体验指南</a></li>
+          <li><a href="/#board" style="color:#c9d6ec">可信度分层</a></li>
+          <li><a href="/#faq" style="color:#c9d6ec">常见问题</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 style="font-size:.86rem;color:#fff;margin-bottom:8px">关于内容</h2>
+        <ul style="list-style:none;padding:0;margin:0;font-size:.83rem;line-height:2">
+          <li><a href="/#comments" style="color:#c9d6ec">用户评论</a></li>
+          <li><a href="/#news" style="color:#c9d6ec">相关资讯</a></li>
+          <li><a href="/#recs" style="color:#c9d6ec">相关推荐</a></li>
+        </ul>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,.14);margin-top:22px;padding-top:14px;font-size:.78rem;color:#93a7c6;display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between">
+      <span>示例数据说明：赛程、名单、伤停与评论均为演示内容，实际以联赛官方发布为准。</span>
+      <span>© 2026 今日赛事今日爆料</span>
+    </div>
+  </div>
+</footer>
+
+<button id="toTop" aria-label="回到顶部" style="position:fixed;right:16px;bottom:18px;width:44px;height:44px;border-radius:50%;border:none;background:var(--brand);color:#fff;font-size:1rem;cursor:pointer;box-shadow:var(--shadow);display:none;z-index:80">↑</button>
+
+<script>
+(function(){
+  var toggle=document.getElementById('navToggle');
+  var nav=document.getElementById('mainNav');
+  if(toggle&&nav){
+    toggle.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded',open?'true':'false');
+      toggle.setAttribute('aria-label',open?'收起导航菜单':'展开导航菜单');
+    });
+    nav.addEventListener('click',function(e){
+      if(e.target.tagName==='A'&&window.innerWidth<=940){
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded','false');
+      }
+    });
+  }
+
+  var input=document.getElementById('siteSearch');
+  var fb=document.getElementById('searchFallback');
+  if(input&&fb){
+    input.addEventListener('input',function(){
+      var q=input.value.trim();
+      if(!q){fb.classList.remove('on');fb.textContent='';return;}
+      var hits=[];
+      document.querySelectorAll('main h2, main h3, main li, main p, main summary, main a').forEach(function(el){
+        var t=(el.textContent||'').replace(/\s+/g,' ').trim();
+        if(t&&t.indexOf(q)>-1&&t.length<160){hits.push(t);}
+      });
+      if(hits.length){
+        fb.innerHTML='<strong>找到 '+hits.length+' 处：</strong><br>'+hits.slice(0,3).map(function(h){return '· '+h.slice(0,42);}).join('<br>');
+      }else{
+        fb.innerHTML='没有匹配“'+q+'”的赛程或条目。试试球队名（曼城、浙江）、项目（CBA、英超、ATP）或日期（11-08）。';
+      }
+      fb.classList.add('on');
+    });
+    document.addEventListener('click',function(e){
+      if(!fb.contains(e.target)&&e.target!==input){fb.classList.remove('on');}
+    });
+  }
+
+  var top=document.getElementById('toTop');
+  if(top){
+    window.addEventListener('scroll',function(){
+      if(window.scrollY>420){top.style.display='block';}else{top.style.display='none';}
+    },{passive:true});
+    top.addEventListener('click',function(){
+      window.scrollTo({top:0,behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    });
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebSite",
+  "name":"今日赛事今日爆料",
+  "description":"聚合当天赛程、首发阵容、伤停名单与盘口异动，按事实、回应、转述、推测四层标注爆料可信度。",
+  "inLanguage":"zh-CN"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"CBA 赛前伤停报告几点更新？","acceptedAnswer":{"@type":"Answer","text":"官方伤停报告在开球前60分钟更新一次，个别场次在前30分钟补充。广州—浙江20:00开球，报告应在19:00前后出现在 CBA 官网赛程详情页。"}},
+    {"@type":"Question","name":"英超首发名单为什么有的队公布早、有的晚？","acceptedAnswer":{"@type":"Answer","text":"联赛规定最晚前75分钟提交，俱乐部可提前在社媒发布。发布时间不同不代表名单质量不同，只反映俱乐部运营节奏。"}},
+    {"@type":"Question","name":"盘口异动能不能当消息证据？","acceptedAnswer":{"@type":"Answer","text":"盘口反映市场定价，不是事实本身。可核对的只有异动时间与异动幅度，时间吻合不等于因果。"}},
+    {"@type":"Question","name":"ATP 年终总决赛小组出线怎么算？","acceptedAnswer":{"@type":"Answer","text":"小组前两名晋级半决赛，先比胜场，再看胜盘率、胜局率。都灵官网 standings 页每场赛后更新。"}},
+    {"@type":"Question","name":"爆料里“预计缺席”和“确定缺席”有什么区别？","acceptedAnswer":{"@type":"Answer","text":"前者是报道者的判断，后者需要俱乐部或联赛官方通告。确定只在报名名单无该球员或官方发布伤情公告时成立。"}},
+    {"@type":"Question","name":"同一天多场比赛，先看哪场？","acceptedAnswer":{"@type":"Answer","text":"看时间是否重叠、名单是否已出。建议选名单已确认、数据可查的场次，另一场等官方伤停报告出来再判断。"}}
+  ]
+}
+</script>
+</body>
+            </html>
